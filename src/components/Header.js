@@ -250,7 +250,7 @@ export default function Header() {
                             <ul className="dropdown-menu">
                                 <li>
                                     <div className="navbar-content">
-                                        <Link to="/login" onClick={logout}>
+                                        <Link to="/" onClick={logout}>
                                             Logout
                                         </Link>
                                     </div>

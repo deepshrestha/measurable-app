@@ -44,7 +44,7 @@ const SideNav = () => {
                                 </a>
                             </li>
                             <li className="active">
-                                <Link to="/new-react-device-list-route/list">
+                                <Link to="/home">
                                     <i className="fa fa-hdd-o hidden-lg hidden-md hidden-sm"></i>
                                     <span className="hidden-xs">Devices</span>
                                 </Link>

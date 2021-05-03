@@ -96,7 +96,12 @@ export default function DeviceTable({
         event.stopImmediatePropagation()
         let deviceId = $(this).attr('id').replace('select-details_', '');
         //alert("Device ID #" + deviceId);
-        history.push("/new-react-device-list-route/device-details");
+        history.push(
+            {
+                pathname: "/new-react-device-list-route/device-details",
+                state: deviceId
+            }
+        );
     });
 
     $(document).on("click", ".select-checkbox", function(event) {
