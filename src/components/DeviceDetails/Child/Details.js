@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Details() {
+  const [detail, setDetail] = useState("");
+
+  function fetchDeviceDetails() {
+    fetch("http://www.json-generator.com/api/json/get/bURULQppxK?indent=2")
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (obj) {
+        setDetail(obj);
+      });
+  }
+
+  useEffect(() => {
+    fetchDeviceDetails();
+  }, []);
+
   return (
     <>
       <div className="row">
@@ -29,27 +45,41 @@ export default function Details() {
           <div className="metric-box device-details">
             <div className="row">
               <div className="col-sm-3">Device ID*</div>
-              <div className="col-sm-9">dan_staging_1</div>
+              <div className="col-sm-9">
+                {detail && <span>{detail.dan_staging_1.device_number}</span>}
+              </div>
             </div>
 
             <div className="row">
               <div className="col-sm-3">Name</div>
-              <div className="col-sm-9">dan_staging_1</div>
+              <div className="col-sm-9">
+                {detail && <span>{detail.dan_staging_1.name}</span>}
+              </div>
             </div>
 
             <div className="row">
               <div className="col-sm-3">Type</div>
-              <div className="col-sm-9">m.e Power Socket Dual</div>
+              <div className="col-sm-9">
+                {detail && <span>{detail.dan_staging_1.type}</span>}
+              </div>
             </div>
 
             <div className="row">
               <div className="col-sm-3">Location</div>
-              <div className="col-sm-9">__</div>
+              <div className="col-sm-9">
+                {detail && detail.dan_staging_1.location ? (
+                  <span>{detail.dan_staging_1.location}</span>
+                ) : (
+                  "__"
+                )}
+              </div>
             </div>
 
             <div className="row">
               <div className="col-sm-3">Last seen</div>
-              <div className="col-sm-9">29-04-2021 08:57:15</div>
+              <div className="col-sm-9">
+                {detail && <span>{detail.dan_staging_1.last_seen}</span>}
+              </div>
             </div>
           </div>
         </div>
